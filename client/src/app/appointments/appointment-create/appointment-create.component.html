@@ -1,0 +1,45 @@
+<div class="container py-4">
+  <app-loader *ngIf="loading"></app-loader>
+  <div class="row">
+    <div class="col md-7 col-lg-6">
+      <h1 class="font-weight-bold mb-5" style="font-size: 36px">New Appointment</h1>
+      
+      <div class="bg-white p-4">
+        <div class="mb-4">
+          <label class="form-label">Select your doctor</label>
+          <ng-select [(ngModel)]="form.doctor" *ngIf="!loading && doctors">
+            <ng-option *ngFor="let doctor of doctors" [value]="doctor._id">{{
+              doctor.name
+            }}</ng-option>
+          </ng-select>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Select the date</label>
+          <div>
+            <ngb-datepicker
+              #dp
+              [minDate]="minDate"
+              [maxDate]="maxDate"
+              [(ngModel)]="form.date"
+            ></ngb-datepicker>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Select the time</label>
+          <ngb-timepicker [(ngModel)]="form.time" [meridian]="true"></ngb-timepicker>
+        </div>
+
+        <p *ngIf="error" class="text-danger mb-2">{{ error }}</p>
+
+        <div class="mb-3">
+          <button class="btn btn-primary" (click)="onSubmit(form)" [disabled]="!formComplete">
+            Create
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

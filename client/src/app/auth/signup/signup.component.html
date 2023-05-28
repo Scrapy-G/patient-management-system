@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 col-lg-4 col-xl-3">
+            <h1 class="my-5 pt-5">Sign Up</h1>
+        
+            <form class="login-form" (ngSubmit)="onSubmit()">
+                
+                <div class="mb-3">
+                    <label class="form-label text-muted">Who are you?</label>
+                    <select [(ngModel)]="data.role" class="form-select py-3" [ngModelOptions]="{ standalone: true}">
+                        <option selected value="patient">I am a Patient</option>
+                        <option value="doctor">I am a Doctor</option>
+                    </select>
+                </div>
+        
+                <div class="form-floating mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        required
+                        placeholder="John Evans"
+                        [(ngModel)]="data.name"
+                        [ngModelOptions]="{ standalone: true}"
+                    />
+                    <label for="name">Full name</label>
+                </div>
+        
+                <div class="form-floating mb-3">
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        required
+                        placeholder="name@example.com"
+                        [(ngModel)]="data.email"
+                        [ngModelOptions]="{ standalone: true}"
+                    />
+                    <label for="email">Email address</label>
+                </div>
+        
+                <div class="form-floating mb-3">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Password"
+                        required
+                        [(ngModel)]="data.password"
+                        [ngModelOptions]="{ standalone: true}"
+                    />
+                    <label for="password">Password</label>
+                </div>
+                <p *ngIf="error" class="alert alert-danger small">{{ error }}</p>
+        
+                <button type="submit" class="btn btn-primary w-100 mb-3">Sign Up</button>
+        
+                <p *ngIf="data.role == 'patient'" class="text-center">
+                    Already have an account? <a routerLink="../login">Log In</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

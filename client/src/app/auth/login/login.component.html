@@ -1,0 +1,41 @@
+<div class="container">
+  <app-loader *ngIf="loading"></app-loader>
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-4 col-xl-3">
+      <h1 class="my-5 pt-5">Log In</h1>
+
+      <form class="login-form" (ngSubmit)="login()">
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+             [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="data.email"
+          />
+          <label for="floatingInput">Email address</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+             [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="data.password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <p *ngIf="error" class="alert alert-danger small">{{ error }}</p>
+
+        <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="loading">Log In</button>
+
+        <p class="text-center">
+          Don't have an account? <a routerLink="../signup">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+
+body {
+  font-family: "Poppins", "Roboto", "sans-serif";
+  background-color: #f4f7fa !important;
+}
+
+*,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.br-15 {
+  border-radius: 15px;
+}
+
+// ------ select --------
+.ng-select {
+  max-width: 300px;
+
+  .ng-select-container {
+    height: 50px !important;
+    max-width: 300px;
+  }
+}
+
+//-------- nav ----------
+
+.navbar .dropdown-menu.show {
+  right: 0 !important;
+  left: auto !important;
+}
+
+//------- buttons ---------
+.btn {
+  padding: 16px 32px;
+  border-radius: 100px;
+  text-transform: capitalize;
+  max-width: 400px;
+  font-weight: bold;
+
+  &.btn-secondary {
+    color: black;
+    background: #f1f1f1 !important;
+    border: none;
+  }
+}
+
+//-------- spacing --------
+.pl-3 {
+  padding-left: 1rem;
+}
+
+.mr-1 {
+  margin-right: 0.25em;
+}
+
+.mr-2 {
+  margin-right: 0.5em;
+}
+
+//-------- font ----------
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.font-weight-light {
+  font-weight: 300;
+}

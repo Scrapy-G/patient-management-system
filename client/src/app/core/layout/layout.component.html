@@ -1,0 +1,24 @@
+<div class="layout">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <a class="navbar-brand px-2" routerLink="/app">
+          <i class="fa-solid fa-house mr-1"></i>
+        </a>
+
+        <div ngbDropdown class="d-inline-block end-0" placement="bottom-end">
+			<button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+				<i class="fa-solid fa-user"></i>
+			</button>
+			<div ngbDropdownMenu>
+				<button ngbDropdownItem class="py-2" routerLink="profile" *ngIf="user.role == 'patient'">Profile</button>
+				<button ngbDropdownItem class="py-2 text-danger" (click)="logout()">Logout</button>
+			</div>
+		</div>
+      </div>
+    </div>
+  </nav>
+  <div class="main pb-5">
+    <router-outlet></router-outlet>
+  </div>
+</div>

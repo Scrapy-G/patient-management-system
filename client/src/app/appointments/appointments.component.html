@@ -1,0 +1,75 @@
+<div class="container py-4">
+  <div class="row">
+    <div class="col md-9 col-lg-7">
+      <div class="welcome mb-5">
+        <p class="text-muted lead">Welcome Back!</p>
+        <h1 class="font-weight-bold m-0" style="font-size: 36px">
+          {{ user.role == "doctor" ? "Dr." : "" }}
+          {{ user.name }}
+        </h1>
+        <a
+          *ngIf="user.role == 'patient'"
+          routerLink="create"
+          class="btn btn-outline-primary mt-3"
+        >
+          <span class="font-weight-bold text-capitalize">Book Appointment</span>
+        </a>
+      </div>
+
+      <p class="font-weight-bold text-muted">Appointments</p>
+
+      <div class="categories my-3">
+        <input
+          id="upcoming"
+          type="radio"
+          name="category"
+          value="upcoming"
+          [(ngModel)]="category"
+          (ngModelChange)="onCategoryChange()"
+        />
+        <label for="upcoming"> Upcoming </label>
+        <input
+          id="requests"
+          type="radio"
+          name="category"
+          value="requests"
+          [(ngModel)]="category"
+          (ngModelChange)="onCategoryChange()"
+        />
+        <label for="requests"> Requests </label>
+        <input
+          id="history"
+          type="radio"
+          name="category"
+          value="history"
+          [(ngModel)]="category"
+          (ngModelChange)="onCategoryChange()"
+        />
+        <label for="history"> History </label>
+      </div>
+
+      <app-loader *ngIf="loading"></app-loader>
+
+      <div *ngIf="!loading">
+        <div
+          *ngFor="let appointment of appointments"
+          class="appointment-list mb-3"
+        >
+          <app-appointment-item
+            [appointment]="appointment"
+            [showResponseOptions]="
+              user.role == 'doctor' && appointment.status == 'pending'
+            "
+            [showStatus]="appointment.status !== 'accepted'"
+            (onAccept)="onAppointmentAccept(appointment)"
+            (onDecline)="onAppointmentDecline(appointment)"
+          ></app-appointment-item>
+        </div>
+
+        <p class="text-muted" *ngIf="appointments.length == 0">
+          No appointments found.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

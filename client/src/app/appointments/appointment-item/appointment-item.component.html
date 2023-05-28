@@ -1,0 +1,34 @@
+<div class="appointment-item p-4 bg-white">
+  <div></div>
+  <div>
+    <p class="font-weight-bold lead">
+      {{
+        this.showNameOf == "patient"
+          ? appointment.patient.name
+          : "Dr. " + appointment.doctor.name
+      }}
+    </p>
+    <p class="mb-2">{{ dateStr }} | {{ timeStr }}</p>
+    <p class="text-muted small">
+      {{ appointment.description || "No details provided." }}
+    </p>
+  </div>
+
+  <p
+    class="my-2 font-weight-bold text-capitalize"
+    [class.text-warning]="appointment.status == 'pending'"
+    [class.text-danger]="appointment.status == 'declined'"
+    [class.text-success]="appointment.status == 'accepted'"
+  >
+    {{ appointment.status }}
+  </p>
+
+  <div *ngIf="showResponseOptions" class="d-flex mt-3">
+    <button class="btn btn-primary mr-2" (click)="onAccept.emit()">
+      Accept
+    </button>
+    <button class="btn btn-outline-danger" (click)="onDecline.emit()">
+      Decline
+    </button>
+  </div>
+</div>

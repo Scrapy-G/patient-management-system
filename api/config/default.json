@@ -1,0 +1,4 @@
+{
+  "jwtPrivateKey": "Jlk54zlkj0z203i5",
+  "dbUrl": "mongodb://mongo:27017/patdoc"
+}

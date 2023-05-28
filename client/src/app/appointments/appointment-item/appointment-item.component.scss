@@ -1,0 +1,40 @@
+.appointment-item {
+    border-radius: 15px;
+}
+
+.appointment-content {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 5px;
+        border-radius: 5px;
+    }
+
+    &.pending::before { 
+        background-color: orange;
+    } 
+
+    &.accepted::before { 
+        background-color: green;
+    } 
+
+    &.declined::before { 
+        background-color: #df5050;
+    } 
+
+    .appointment-time {
+        display: flex;
+        align-items: center;
+
+        .rule-line {
+            flex-grow: 1;
+            border-bottom: 1px solid rgb(187, 187, 187);
+            margin-left: 1rem;
+        }
+    }
+}
