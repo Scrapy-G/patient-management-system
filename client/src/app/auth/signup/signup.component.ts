@@ -24,6 +24,7 @@ export class SignupComponent {
   ) {}
 
   onSubmit() {
+    this.loading = true;
     this.userService.addUser(this.data).subscribe({
       next: (user) => {
         this.authService.login(this.data.email, this.data.password).subscribe();

@@ -15,9 +15,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    this.loadUser();
+  }
+
+  loadUser() {
     this.userSubscription = this.authService.user.subscribe((user) => {
-      if(user)
-        this.user = user;
+      if (user) this.user = user;
     });
   }
 

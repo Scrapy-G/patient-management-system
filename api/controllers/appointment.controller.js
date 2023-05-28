@@ -35,9 +35,9 @@ exports.addAppointment = async (req, res) => {
         return res.status(400).send("Error: Doctor with given ID does not exist");
     
     const appointment = await Appointment.create({
+        ...req.body,
         doctor,
         patient: req.user,
-        description: req.body.description,
         date: req.body.date
     });
 

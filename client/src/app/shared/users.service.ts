@@ -21,6 +21,10 @@ export class UsersService {
     return this.apiService.get("users/me");
   }
 
+  getDoctors() {
+    return this.apiService.get("users", { params: { role: "doctor" }});
+  }
+
   updateMe(data = {}) {
     return this.apiService.put("users/me", data);
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../shared/users.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { UsersService } from '../shared/users.service';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -74,11 +75,16 @@ export class ProfileEditComponent implements OnInit {
   }
 
   deleteAccount() {
-    this.userService.deleteMyAccount().subscribe(() => {
-      this.isAccountDeleted = true;
-      setTimeout(() => {
-        this.authService.logout();
-      }, 2000);
-    });
+    return new Promise((res, _) => {
+      this.userService.deleteMyAccount().subscribe(() => {
+        this.isAccountDeleted = true;
+
+        //enough time for user to see success message
+        setTimeout(() => {
+          this.authService.logout();
+          res(true);
+        }, 2000);
+      });
+    })
   }
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { take } from "rxjs";
+
 import { AppointmentService } from "./appointment.service";
 import { Appointment } from "../models";
 import { AuthService } from "../auth/auth.service";
-import { take } from "rxjs";
 
 @Component({
   selector: "app-appointments",

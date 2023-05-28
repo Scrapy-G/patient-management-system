@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   NgbDateStruct,
-  NgbCalendar,
   NgbDateParserFormatter,
   NgbTimeStruct,
-  NgbDate,
 } from "@ng-bootstrap/ng-bootstrap";
 
 import { UsersService } from "src/app/shared/users.service";
@@ -14,7 +12,6 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-appointment-create",
   templateUrl: "./appointment-create.component.html",
-  styleUrls: ["./appointment-create.component.scss"],
 })
 export class AppointmentCreateComponent implements OnInit {
   calendarModel: NgbDateStruct;
@@ -30,10 +27,12 @@ export class AppointmentCreateComponent implements OnInit {
   form: {
     date: NgbDateStruct | null;
     time: NgbTimeStruct | null;
+    description: string;
     doctor: string;
   } = {
     date: null,
     time: null,
+    description: "",
     doctor: "",
   };
 
@@ -49,20 +48,19 @@ export class AppointmentCreateComponent implements OnInit {
 
   ngOnInit() {
     this.loadDoctors();
-    this.setDateBoundaries();
+    this.setDateBoundaries(new Date());
   }
 
   loadDoctors() {
     this.loading = true;
-    this.userService.getUsers({ role: "doctor" }).subscribe((doctors) => {
+    this.userService.getDoctors().subscribe((doctors) => {
       this.doctors = doctors;
       this.loading = false;
     });
   }
 
-  setDateBoundaries() {
+  setDateBoundaries(currentDate: Date) {
     //set date boundary
-    const currentDate = new Date();
     const tomorrow = new Date(currentDate.setDate(currentDate.getDate() + 1));
     const oneMonthAhead = new Date(
       currentDate.setMonth(currentDate.getMonth() + 2)
@@ -87,7 +85,7 @@ export class AppointmentCreateComponent implements OnInit {
     ).getTime();
 
     this.appointmentService
-      .addAppointment({ doctor: form.doctor, date })
+      .addAppointment({ doctor: form.doctor, date, description: form.description })
       .subscribe({
         next: (appointment) => {
           console.log("appointment success", appointment);

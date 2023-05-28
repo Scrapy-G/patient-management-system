@@ -53,7 +53,7 @@ const updateValidationSchema = Joi.object({
   address: Joi.string().max(500).required(),
   age: Joi.number().min(18).max(125).required(),
   name: Joi.string().max(255).required()
-})
+});
 
 module.exports = {
   User,

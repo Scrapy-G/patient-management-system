@@ -28,6 +28,7 @@ exports.addUser = async (req, res) => {
 
   const user = await User.create({
     ...req.body,
+    email: req.body.email.toLowerCase(),
     password: passwordHash,
     ipAddress: req.socket.remoteAddress,
   });

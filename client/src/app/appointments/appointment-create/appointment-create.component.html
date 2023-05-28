@@ -31,6 +31,15 @@
           <ngb-timepicker [(ngModel)]="form.time" [meridian]="true"></ngb-timepicker>
         </div>
 
+        <div class="mb-4">
+          <label class="form-label">Comment</label>
+          <div>
+            <textarea class="form-control"
+              [(ngModel)]="form.description"
+            ></textarea>
+          </div>
+        </div>
+
         <p *ngIf="error" class="text-danger mb-2">{{ error }}</p>
 
         <div class="mb-3">

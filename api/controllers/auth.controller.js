@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const { User } = require("../models/user.model");
 
 exports.login = async (req, res) => {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email.toLowerCase() });
     
     if (!user)
         return res.status(401).send("Error: Invalid email/password");

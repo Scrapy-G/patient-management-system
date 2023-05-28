@@ -9,7 +9,7 @@
           <label class="form-label">Full name</label>
           <input
             type="text"
-            class="form-control py-3"
+            class="form-control"
             id="name"
             required
             [(ngModel)]="user.name"
@@ -23,7 +23,7 @@
               <label class="form-label">Age</label>
               <input
                 type="number"
-                class="form-control py-3"
+                class="form-control"
                 id="name"
                 required
                 [(ngModel)]="user.age"
@@ -35,7 +35,7 @@
             <div>
               <label class="form-label">Gender</label>
               <select
-                class="form-select py-3"
+                class="form-select"
                 [(ngModel)]="user.gender"
                 [ngModelOptions]="{ standalone: true }"
               >
@@ -49,7 +49,7 @@
         <div class="mb-4">
           <label class="form-label">Address</label>
           <textarea
-            class="form-control py-3"
+            class="form-control"
             required
             [(ngModel)]="user.address"
             [ngModelOptions]="{ standalone: true }"
@@ -63,7 +63,7 @@
         <button type="submit" class="btn btn-primary">Save</button>
       </form>
 
-      <div class="mt-5">
+      <div class="my-5">
         <p *ngIf="isAccountDeleted" class="alert alert-success">Account was deleted. Redirecting to login...</p>
         <button class="btn btn-outline-danger" (click)="openModal(content)">Delete Account</button>
       </div>

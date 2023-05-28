@@ -18,7 +18,7 @@ export class LoginComponent {
   loading = false;
 
   login() {
-    this.loading = false;
+    this.loading = true;
     this.authService.login(this.data.email, this.data.password).subscribe({
       error: err => {
         console.log(err);
