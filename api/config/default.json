@@ -1,4 +1,6 @@
 {
-  "jwtPrivateKey": "Jlk54zlkj0z203i5",
-  "dbUrl": "mongodb://mongo:27017/patdoc"
+  "jwtPrivateKey": "JWT_SECRET",
+  "dbUrl": "mongodb://mongo:27017/patdoc",
+  "mjPublicKey": "MAILJET_PUBLIC_KEY",
+  "mjPrivateKey": "MAILJET_PRIVATE_KEY"
 }
