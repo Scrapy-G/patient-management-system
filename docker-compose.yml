@@ -23,6 +23,7 @@ services:
       context: ./api
     ports:
       - 3000:3000
+    restart: "always"
     depends_on:
       mongo:
         condition: service_healthy

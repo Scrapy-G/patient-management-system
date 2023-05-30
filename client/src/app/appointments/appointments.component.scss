@@ -7,12 +7,14 @@
         background-color: white;
         padding: .5rem 1rem;
         border-radius: 50px;
-        margin-right: .5rem;       
+        margin-right: .5rem;    
+        border: 2px solid #919191;   
     }
 
     input:checked + label {
         background-color: #409df5;
         color: #ffffff;
         font-weight: bold;
+        border: none;
     }
 }

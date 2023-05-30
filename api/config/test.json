@@ -1,3 +1,5 @@
 {
-  "jwtPrivateKey": "Jlk54zlkj0z203i5"
+  "jwtPrivateKey": "JWT_SECRET",
+  "mjPublicKey": "MAILJET_PUBLIC_KEY",
+  "mjPrivateKey": "MAILJET_PRIVATE_KEY"
 }

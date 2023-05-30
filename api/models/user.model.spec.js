@@ -22,6 +22,7 @@ describe("User.generateAuthToken", () => {
       _id: payload._id,
       name: payload.name,
       role: payload.role,
+      email: payload.email
     });
   });
 });

@@ -21,17 +21,26 @@ const appointmentSchema = new mongoose.Schema({
     default: "pending",
     enum: ["pending", "declined", "accepted"],
   },
-  description: String,
+  description: {
+    type: String,
+    default: "not specified",
+  },
   date: Date,
 });
 
 appointmentSchema.index({ date: 1 });
+appointmentSchema.index({ "patient._id": 1 });
+appointmentSchema.index({ "doctor._id": 1 });
+
 const Appointment = mongoose.model("Appoinment", appointmentSchema);
 
 const validationSchema = Joi.object({
   doctor: Joi.objectId().required(),
   description: Joi.string().max(255),
-  date: Joi.date().timestamp().required().min(new Date().setMonth(new Date().getMonth())),
+  date: Joi.date()
+    .timestamp()
+    .required()
+    .min(new Date().setMonth(new Date().getMonth())),
 });
 
 module.exports = {

@@ -18,7 +18,7 @@
 
       <p class="font-weight-bold text-muted">Appointments</p>
 
-      <div class="categories my-3">
+      <div class="categories mt-3 mb-2">
         <input
           id="upcoming"
           type="radio"
@@ -27,7 +27,7 @@
           [(ngModel)]="category"
           (ngModelChange)="onCategoryChange()"
         />
-        <label for="upcoming"> Upcoming </label>
+        <label for="upcoming" class="shadow-sm"> Upcoming </label>
         <input
           id="requests"
           type="radio"
@@ -36,7 +36,7 @@
           [(ngModel)]="category"
           (ngModelChange)="onCategoryChange()"
         />
-        <label for="requests"> Requests </label>
+        <label for="requests" class="shadow-sm"> Requests </label>
         <input
           id="history"
           type="radio"
@@ -45,7 +45,18 @@
           [(ngModel)]="category"
           (ngModelChange)="onCategoryChange()"
         />
-        <label for="history"> History </label>
+        <label for="history" class="shadow-sm"> History </label>
+      </div>
+
+      <div [ngSwitch]="category" class="text-muted small mb-3">
+        <i class="fa-regular fa-circle-question mr-2"></i>
+        <span *ngSwitchCase="'upcoming'">Confirmed appointments</span>
+        <span *ngSwitchCase="'requests'"
+          >Unconfirmed appointments. Doctor needs to accept.</span
+        >
+        <span *ngSwitchCase="'history'"
+          >Past appointments.</span
+        >
       </div>
 
       <app-loader *ngIf="loading"></app-loader>

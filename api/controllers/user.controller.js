@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 
 const { User } = require("../models/user.model");
 const { Appointment } = require("../models/appointment.model");
+const sendMail = require("../util/mail.util");
 
 exports.getMe = async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -43,4 +44,12 @@ exports.deleteMe = async (req, res) => {
   await Appointment.deleteMany({ "patient._id": req.user._id });
   await User.deleteOne({ _id: req.user._id });
   res.status(204).send();
+
+  const data = {
+    email: req.user.email,
+    name: req.user.name,
+    subject: "Patdoc - Account deleted",
+    message: `Your account was successfully deleted. Feel free to sign up again if you need to.`,
+  };
+  sendMail(data);
 };

@@ -5,8 +5,8 @@ module.exports = () => {
   mongoose
     .connect(config.get("dbUrl"), {
       auth: {
-        username: "root",
-        password: "root",
+        username: config.get("dbUsername"),
+        password: config.get("dbPassword"),
       },
       authSource: "admin",
       useNewUrlParser: true,
