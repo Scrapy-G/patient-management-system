@@ -37,10 +37,7 @@ const Appointment = mongoose.model("Appoinment", appointmentSchema);
 const validationSchema = Joi.object({
   doctor: Joi.objectId().required(),
   description: Joi.string().max(255),
-  date: Joi.date()
-    .timestamp()
-    .required()
-    .min(new Date().setMonth(new Date().getMonth())),
+  date: Joi.date().timestamp().required().greater("now"),
 });
 
 module.exports = {

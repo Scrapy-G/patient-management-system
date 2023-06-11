@@ -29,7 +29,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  ipAddress: String
 });
 
 userSchema.methods.generateAuthToken = function () {

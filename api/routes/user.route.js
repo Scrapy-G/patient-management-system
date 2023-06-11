@@ -7,7 +7,7 @@ const isAuth = require("../middleware/auth.middleware");
 
 const router = express.Router();
 
-router.get("/", userController.getUsers);
+router.get("/", isAuth, userController.getUsers);
 router.post("/", validate(validationSchema), userController.addUser);
 router.get("/me", isAuth, userController.getMe);
 router.put("/me", isAuth, validate(updateValidationSchema), userController.updateMe);
